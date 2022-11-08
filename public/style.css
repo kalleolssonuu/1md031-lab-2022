@@ -1,1 +1,25 @@
-/*empty*/
+.allburgers {
+    left: 5%;
+    size: relative;
+    background-color: aliceblue;
+    display: flex;
+    justify-content: first baseline;
+}
+
+.burgers {
+    height: relative;
+    top: 0;
+    padding: 10px;
+}
+
+p {
+    font-size: large;
+}
+
+h1 {
+
+}
+
+h2 {
+    position: relative;
+}
