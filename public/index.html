@@ -1,69 +1,101 @@
 <!DOCTYPE HTML>
 <html lang="en">
-   <head>
-        <title>Burgers from the Future</title>
-        <meta charset="utf-8"/>
-        <link rel="stylesheet" href="style.css">
-   </head>
-   <body>
-    <h2>
-       Welcome to Burgers from the Future
-    </h2>
-    <nav> Menu items </nav>
+<head>
+    <title>Burgers from the Future</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<header><h2> Welcome to Burgers from the Future</h2></header>
+
+<nav> Menu items </nav>
 
 
-    <main>
-       <section>
-        <div class="allburgers">
-            <div class="burgers" style="display: inline-block">
-                <h1>Dystopia Burger</h1>
-                <img src="https://st.depositphotos.com/1000504/3999/i/950/depositphotos_39996387-stock-photo-burger-bread.jpg" alt="span" style="width: 200px; height: 250px;" title="Dystopia">
-                <ul>
-                    <li>Top bread</li>
-                    <li>Bottom bread</li>
-                </ul>
-            </div>
-
-            <div class="burgers" style="display: inline-block">
-                <h1>Levitating Burger</h1>
-                <img src="https://live.staticflickr.com/7855/33697157168_fb75848bd5_b.jpg" alt="span" style="width: 200px; height: 250px;" title="Floating">
-                <ul>
-                    <li>Top bread</li>
-                    <li>Lettuce</li>
-                    <li>Red Onion</li>
-                    <li>Tomato</li>
-                    <li>Cheese</li>
-                    <li>Ketchup</li>
-                    <li>Future Sauce</li>
-                    <li>Beef</li>
-                    <li>Bottom bread</li>
-                </ul>
-            </div>
-
-            <div class="burgers" style="display: inline-block">
-                <h1>Everyone-can-eat Burger</h1>
-                <img src="https://glutenfreeindian.com/wp-content/uploads/2019/04/PUL_5600.jpg" alt="span" style="width: 200px; height: 250px;" title="Everyone-can-eat">
-                <ul>
-                    <li>Gluten free top bread</li>
-                    <li>Non-allergenic and vegan contents</li>
-                    <li>Gluten free bottom bread</li>
-                </ul>
-            </div>
+<main>
+    <section>
+    <div class="allburgers">
+        <div class="burgers" style="display: inline-block">
+            <h1>Dystopia Burger</h1>
+            <img src="https://st.depositphotos.com/1000504/3999/i/950/depositphotos_39996387-stock-photo-burger-bread.jpg" alt="span" style="width: 200px; height: 250px;" title="Dystopia">
+            <ul>
+                <li>Top bread (contains gluten)</li>
+                <li>Bottom bread (contains gluten)</li>
+            </ul>
         </div>
-        
 
-       </section>
+        <div class="burgers" style="display: inline-block">
+            <h1>Levitating Burger</h1>
+            <img src="https://live.staticflickr.com/7855/33697157168_fb75848bd5_b.jpg" alt="span" style="width: 200px; height: 250px;" title="Floating">
+            <ul>
+                <li>Top bread (contains gluten)</li>
+                <li>Lettuce</li>
+                <li>Red Onion</li>
+                <li>Tomato</li>
+                <li>Cheese (contains lactose)</li>
+                <li>Ketchup</li>
+                <li>Future Sauce</li>
+                <li>Beef</li>
+                <li>Bottom bread (contains gluten)</li>
+            </ul>
+        </div>
+
+        <div class="burgers" style="display: inline-block">
+            <h1>Everyone-can-eat Burger</h1>
+            <img src="https://glutenfreeindian.com/wp-content/uploads/2019/04/PUL_5600.jpg" alt="span" style="width: 200px; height: 250px;" title="Everyone-can-eat">
+            <ul>
+                <li>Gluten free top bread</li>
+                <li>Non-allergenic and vegan contents</li>
+                <li>Gluten free bottom bread</li>
+            </ul>
+        </div>
+    </div>
+    </section>
 
 
-       <section>
-          Content
-       </section>
-    </main>
+    <section id="contact">
+        <form>
+            <p>
+                <label for="fullname">Full name</label><br>
+                <input type="text" id="firstname" name="fn" required="required" placeholder="First- and Last name">
+            </p>
+
+            <p>
+                <label for="lastname" type="text">E-mail</label><br>
+                <input type="text" id="email" name="ln" placeholder="E-mail address">
+            </p>
+
+            <p>
+                <label for="lastname">Street</label><br>
+                <input type="text" id="streetname" name="ln" placeholder="Street name">
+            </p>
+
+            <p>
+                <label for="lastname">House</label><br>
+                <input type="text" id="housenumber" name="ln" placeholder="House number">
+            </p>
+        </form>
+    </section>
+
+
+    <section id="payment">
+        <p>
+            <label for="recipient">Recipient</label><be>
+            <select id="recipient" name="rcp">
+                <option>Swish</option>
+                <option>Betalkort</option>
+                <option>Klarna</option>
+                <option>PayPal</option>
+            </select>
+        </p>
+    </section>
+</main>
 
 
 
-    <footer>
-       End notes
-    </footer>
-    </body>
+<footer>
+    &copy FutureBurgers, Inc.;
+</footer>
+</body>
+
 </html>
