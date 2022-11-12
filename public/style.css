@@ -8,16 +8,13 @@
 
 .burgers {
     height: relative;
+    width: 270px;
     top: 0;
     padding: 10px;
 }
 
 p {
     font-size: large;
-}
-
-h1 {
-
 }
 
 h2 {

@@ -7,95 +7,106 @@
 </head>
 
 <body>
-<header><h2> Welcome to Burgers from the Future</h2></header>
-
-<nav> Menu items </nav>
-
-
-<main>
-    <section>
-    <div class="allburgers">
-        <div class="burgers" style="display: inline-block">
-            <h1>Dystopia Burger</h1>
-            <img src="https://st.depositphotos.com/1000504/3999/i/950/depositphotos_39996387-stock-photo-burger-bread.jpg" alt="span" style="width: 200px; height: 250px;" title="Dystopia">
-            <ul>
-                <li>Top bread (contains gluten)</li>
-                <li>Bottom bread (contains gluten)</li>
-            </ul>
-        </div>
-
-        <div class="burgers" style="display: inline-block">
-            <h1>Levitating Burger</h1>
-            <img src="https://live.staticflickr.com/7855/33697157168_fb75848bd5_b.jpg" alt="span" style="width: 200px; height: 250px;" title="Floating">
-            <ul>
-                <li>Top bread (contains gluten)</li>
-                <li>Lettuce</li>
-                <li>Red Onion</li>
-                <li>Tomato</li>
-                <li>Cheese (contains lactose)</li>
-                <li>Ketchup</li>
-                <li>Future Sauce</li>
-                <li>Beef</li>
-                <li>Bottom bread (contains gluten)</li>
-            </ul>
-        </div>
-
-        <div class="burgers" style="display: inline-block">
-            <h1>Everyone-can-eat Burger</h1>
-            <img src="https://glutenfreeindian.com/wp-content/uploads/2019/04/PUL_5600.jpg" alt="span" style="width: 200px; height: 250px;" title="Everyone-can-eat">
-            <ul>
-                <li>Gluten free top bread</li>
-                <li>Non-allergenic and vegan contents</li>
-                <li>Gluten free bottom bread</li>
-            </ul>
-        </div>
+    <div>
+        <header><h2> Welcome to Burgers from the Future</h2></header>
     </div>
-    </section>
 
+    <nav> <h1>Menu Items</h1> </nav>
 
-    <section id="contact">
-        <form>
+    <main>
+        <section id="burgers">
+            <div class="allburgers">
+                <div class="burgers" style="display: inline-block">
+                    <h1>Dystopia Burger</h1>
+                    <img src="https://st.depositphotos.com/1000504/3999/i/950/depositphotos_39996387-stock-photo-burger-bread.jpg" alt="span" style="width: 200px; height: 250px;" title="Dystopia">
+                    <ul>
+                        <li>Top bread (contains gluten)</li>
+                        <li>Bottom bread (contains gluten)</li>
+                    </ul>
+                </div>
+
+                <div class="burgers" style="display: inline-block">
+                    <h1>Levitating Burger</h1>
+                    <img src="https://live.staticflickr.com/7855/33697157168_fb75848bd5_b.jpg" alt="span" style="width: 200px; height: 250px;" title="Floating">
+                    <ul>
+                        <li>Top bread (contains gluten)</li>
+                        <li>Lettuce</li>
+                        <li>Red Onion</li>
+                        <li>Tomato</li>
+                        <li>Cheese (contains lactose)</li>
+                        <li>Ketchup</li>
+                        <li>Future Sauce</li>
+                        <li>Beef</li>
+                        <li>Bottom bread (contains gluten)</li>
+                    </ul>
+                </div>
+
+                <div class="burgers" style="display: inline-block">
+                    <h1>Everyone-can-eat Burger</h1>
+                    <img src="https://glutenfreeindian.com/wp-content/uploads/2019/04/PUL_5600.jpg" alt="span" style="width: 200px; height: 250px;" title="Everyone-can-eat">
+                    <ul>
+                        <li>Gluten free top bread</li>
+                        <li>Non-allergenic and vegan contents</li>
+                        <li>Gluten free bottom bread</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <form>
+                <p>
+                    <label for="fullname">Full name</label><br>
+                    <input type="text" id="firstname" name="fn" required="required" placeholder="First- and Last name">
+                </p>
+
+                <p>
+                    <label for="lastname" type="text">E-mail</label><br>
+                    <input type="text" id="email" name="ln" placeholder="E-mail address">
+                </p>
+
+                <p>
+                    <label for="lastname">Street</label><br>
+                    <input type="text" id="streetname" name="street" required="required" placeholder="Street name">
+                </p>
+
+                <p>
+                    <label for="lastname">House Number</label><br>
+                    <input type="text" id="housenumber" name="housenr" required="required" placeholder="House number">
+                </p>
+            </form>
+        </section>
+
+        <section id="payment">
             <p>
-                <label for="fullname">Full name</label><br>
-                <input type="text" id="firstname" name="fn" required="required" placeholder="First- and Last name">
+                <label for="payment">Payment Method</label><br>
+                <select id="payment" name="payment">
+                    <option>Swish</option>
+                    <option>Betalkort</option>
+                    <option>Klarna</option>
+                    <option>PayPal</option>
+                </select>
             </p>
+        </section>
 
-            <p>
-                <label for="lastname" type="text">E-mail</label><br>
-                <input type="text" id="email" name="ln" placeholder="E-mail address">
-            </p>
-
-            <p>
-                <label for="lastname">Street</label><br>
-                <input type="text" id="streetname" name="ln" placeholder="Street name">
-            </p>
-
-            <p>
-                <label for="lastname">House</label><br>
-                <input type="text" id="housenumber" name="ln" placeholder="House number">
-            </p>
-        </form>
-    </section>
-
-
-    <section id="payment">
         <p>
-            <label for="recipient">Recipient</label><be>
-            <select id="recipient" name="rcp">
-                <option>Swish</option>
-                <option>Betalkort</option>
-                <option>Klarna</option>
-                <option>PayPal</option>
-            </select>
+            <label>Gender</label><br>
+            <input type="radio" id="male" name="gender" required="required" placeholder="gender">
+            <label for="gender">Male</label><br>
+            <input type="radio" id="female" name="gender" required="required" placeholder="gender">
+            <label for="gender">Female</label><br>
+            <input type="radio" id="other" name="gender" required="required" placeholder="gender">
+            <label for="gender">Do not wish to provide</label><br>
         </p>
-    </section>
-</main>
+        <input type="submit" value="Send">
+
+    </main>
 
 
 
-<footer>
-    &copy FutureBurgers, Inc.;
-</footer>
+    <footer style="right: 0px">
+        &copy FutureBurgers, Inc.;
+    </footer>
 </body>
 
 </html>
