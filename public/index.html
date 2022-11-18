@@ -7,11 +7,13 @@
 </head>
 
 <body>
-    <div>
-        <header><h2>Welcome to Burgers from the Future</h2></header>
+    
+    <div id="header">
+        <img src="https://wallpaperaccess.com/full/1373403.jpg" alt="span" style="width: 100%; height: auto; opacity: 0.5;">
+        <header><h2 id="welcome">Welcome to Burgers from the Future</h2></header>
     </div>
 
-    <nav><h1>Menu Items</h1> </nav>
+    <nav><h1 style="text-align: center;">Menu Items</h1> </nav>
 
     <main>
     <section id="burgers">
@@ -51,7 +53,7 @@
             </div>
         </section>
 
-        <section id="contact">
+        <section class="userinfo" id="contactpayment">
             <form>
                 <p>
                     <label for="fullname">Full name</label><br>
@@ -73,9 +75,7 @@
                     <input type="number" id="housenumber" name="housenr" required="required" placeholder="House number">
                 </p>
             </form>
-        </section>
 
-        <section id="payment">
             <p>
                 <label for="payment">Payment Method</label><br>
                 <select id="payment" name="payment">
@@ -87,26 +87,28 @@
             </p>
         </section>
 
-        <p>
-            <label>Gender</label><br>
-            <input type="radio" id="male" name="gender" required="required" placeholder="gender">
-            <label for="gender">Male</label><br>
-            <input type="radio" id="female" name="gender" required="required" placeholder="gender">
-            <label for="gender">Female</label><br>
-            <input type="radio" id="other" name="gender" required="required" placeholder="gender">
-            <label for="gender">Do not wish to provide</label><br>
-        </p>
 
-        <button type="submit">
-            Send Info
-        </button>
-        <!-- <input type="submit" value="Send"> -->
+        <section class="userinfo" id="gender">
+            <p>
+                <label>Gender</label><br>
+                <input type="radio" id="male" name="gender" required="required" placeholder="gender">
+                <label for="gender">Male</label><br>
+                <input type="radio" id="female" name="gender" required="required" placeholder="gender">
+                <label for="gender">Female</label><br>
+                <input type="radio" id="other" name="gender" required="required" placeholder="gender">
+                <label for="gender">Do not wish to provide</label><br>
+            </p>
+
+            <button type="submit">
+                Send Info
+            </button>
+        </section>
 
     </main>
 
 
 
-    <footer style="right: 0px; position: absolute;">
+    <footer style="right: 0px; position: absolute; padding: 5px;">
         &copy FutureBurgers, Inc.
     </footer>
 </body>

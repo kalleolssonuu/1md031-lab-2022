@@ -1,6 +1,7 @@
 <template>
     <div>
       {{ burger.name }} {{ burger.kCal }}
+      <button v-on:click="selectThisBurger">Select</button>
     </div>
   </template>
   
@@ -9,6 +10,11 @@
     name: 'OneBurger',
     props: {
       burger: Object
+    },
+    methods: {
+      selectThisBurger: function () {
+        this.$emit("selected", this.burger)
+      }
     }
   }
   </script>
@@ -17,4 +23,5 @@
   <style scoped>
   
   </style>
+  
   

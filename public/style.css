@@ -16,6 +16,16 @@ body {
     width: 270px;
     top: 0;
     padding: 10px;
+    border: 2px solid rgb(50, 50, 50);
+    
+}
+
+#header {
+    margin: 5px 0px 10px; overflow: hidden;
+}
+
+#welcome {
+    position: absolute; padding: 5%; margin-top: -64%; margin-left: 28%;
 }
 
 #burgers {
@@ -27,10 +37,13 @@ body {
     justify-content: first baseline;
 }
 
-#contact {
-
+.userinfo {
+    padding: 5%;
 }
 
+#contactpayment {
+    /* padding: 5%; */
+}
 
 button {
     margin: 20px 0px 20px;
@@ -51,4 +64,8 @@ h1, h2 {
 
 button:hover {
     background-color: cornflowerblue;
+ }
+
+ footer {
+    padding: 5px;
  }

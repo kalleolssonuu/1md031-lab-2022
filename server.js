@@ -72,6 +72,12 @@ io.on('connection', function (socket) {
     io.emit('currentQueue', { orders: data.getAllOrders() });
   });
 
+// Delivery Time listener
+
+socket.on("deliveryTime", function() {
+  socket.emit("deliveryTimeIs", { orders: Object.keys(data.getAllOrders()).length * 5 })
+});
+
   // When a connected client emits an "clearQueue" message
   socket.on('clearQueue', function () {
     data = new Data();
