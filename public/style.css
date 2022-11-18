@@ -1,3 +1,8 @@
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 14pt;
+}
+
 .allburgers {
     left: 5%;
     size: relative;
@@ -13,10 +18,37 @@
     padding: 10px;
 }
 
+#burgers {
+    background-color: black;
+    color: white;
+    left: 5%;
+    size: relative;
+    display: flex;
+    justify-content: first baseline;
+}
+
+#contact {
+
+}
+
+
+button {
+    margin: 20px 0px 20px;
+}
+
 p {
     font-size: large;
 }
 
-h2 {
+h1, h2 {
     position: relative;
+
 }
+
+.allergen {
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: cornflowerblue;
+ }
