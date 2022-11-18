@@ -72,7 +72,7 @@
 
                 <p>
                     <label for="lastname">House Number</label><br>
-                    <input type="text" id="housenumber" name="housenr" required="required" placeholder="House number">
+                    <input type="number" id="housenumber" name="housenr" required="required" placeholder="House number">
                 </p>
             </form>
         </section>
@@ -98,13 +98,17 @@
             <input type="radio" id="other" name="gender" required="required" placeholder="gender">
             <label for="gender">Do not wish to provide</label><br>
         </p>
-        <input type="submit" value="Send">
+
+        <button type="submit">
+            Send Info
+        </button>
+        <!-- <input type="submit" value="Send"> -->
 
     </main>
 
 
 
-    <footer style="right: 0px">
+    <footer style="right: 0px; position: absolute;">
         &copy FutureBurgers, Inc.;
     </footer>
 </body>
