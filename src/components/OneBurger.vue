@@ -1,4 +1,14 @@
 <template>
+    <div class="burgers" style="display: inline-block">
+        <h1> {{ burger.name }} </h1>
+        <img src=burger.URL alt="span" style="width: 200px; height: 250px;" title="Dystopia">
+        <ul>
+            <li>Top bread (<span class="allergen">gluten</span>)</li>
+            <li>Bottom bread (<span class="allergen">gluten</span>)</li>
+        </ul>
+    </div>
+
+
     <div>
       {{ burger.name }}, {{ burger.kCal }} kCal {{ burger.lactose }} {{ burger.gluten }}
       <button v-on:click="selectThisBurger">Select</button>

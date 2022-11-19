@@ -9,7 +9,7 @@
 
   <main>
     <section id="burgers">
-      <div class="burgers" style="display: inline-block">
+      <div class="burgers">
         <h1>Dystopia Burger</h1>
         <img src="https://st.depositphotos.com/1000504/3999/i/950/depositphotos_39996387-stock-photo-burger-bread.jpg" alt="span" style="width: 200px; height: 250px;" title="Dystopia">
         <ul>
@@ -18,7 +18,7 @@
         </ul>
       </div>
 
-      <div class="burgers" style="display: inline-block">
+      <div class="burgers">
         <h1>Levitating Burger</h1>
         <img src="https://live.staticflickr.com/7855/33697157168_fb75848bd5_b.jpg" alt="span" style="width: 200px; height: 250px;" title="Floating">
         <ul>
@@ -34,7 +34,7 @@
         </ul>
       </div>
 
-      <div class="burgers" style="display: inline-block">
+      <div class="burgers">
         <h1>Everyone-can-eat Burger</h1>
         <img src="https://glutenfreeindian.com/wp-content/uploads/2019/04/PUL_5600.jpg" alt="span" style="width: 200px; height: 250px;" title="Everyone-can-eat">
         <ul>
@@ -99,13 +99,6 @@
   </main>
 
 
-
-    <footer style="right: 0px; position: absolute; padding: 5px;">
-        &copy FutureBurgers, Inc.
-    </footer>
-  </div>
-
-  <div>
     <div>
       {{ namn }} <br>
       Current delivery time is: {{ deliveryTime }}
@@ -127,11 +120,16 @@
     </div>
     <button v-on:click="checkDeliveryTime">Check Delivery Time</button>
 
-
+    <div>
     namn: <input type="text" v-model="namn">
+    </div>
     <div id="map" v-on:click="addOrder">
       click here
     </div>
+
+    <footer style="right: 0px; position: absolute; padding: 5px;">
+        FutureBurgers, Inc.
+    </footer>
   </div>
 </template>
 
@@ -141,20 +139,23 @@ import io from 'socket.io-client'
 
 const socket = io();
 
-const MenuItem = function(nm, pic, cals, lcts, gltn) {
+const MenuItem = function(nm, pic, cals, allrgns, ingrdnts) {
   this.name = nm;
   this.URL = pic;
   this.kCal = cals;
-  this.lactose = lcts;
-  this.gluten = gltn;
+  this.allergens = allrgns;
+  this.ingredients = ingrdnts;
 }
 
-let infoBurgers = [ new MenuItem("Dystopia Burger", "https://st.depositphotos.com/1000504/3999/i/950/depositphotos_39996387-stock-photo-burger-bread.jpg",
-            50, "", "gluten"), new MenuItem("Levitating Burger", "https://live.staticflickr.com/7855/33697157168_fb75848bd5_b.jpg",
-            1000, "lactose", "gluten"), new MenuItem("Everyone-can-eat Burger", "https://glutenfreeindian.com/wp-content/uploads/2019/04/PUL_5600.jpg",
-            401, "", "")];
+let burger1 = new MenuItem("Dystopia Burger", "https://st.depositphotos.com/1000504/3999/i/950/depositphotos_39996387-stock-photo-burger-bread.jpg",
+            50, ["gluten"], ["Top bread", "Bottom bread"]);
+let burger2 = new MenuItem("Levitating Burger", "https://live.staticflickr.com/7855/33697157168_fb75848bd5_b.jpg",
+            1000, ["lactose", "gluten"], ["Lettuce", "Red Onion", "Tomato", "Cheese", "Ketchup", "Future Sauce", "Beef", "Bottom bread"]);
 
-console.log(infoBurgers);
+let burger3 = new MenuItem("Everyone-can-eat Burger", "https://glutenfreeindian.com/wp-content/uploads/2019/04/PUL_5600.jpg",
+            401, [""], ["Gluten free top bread", "Non-allergenic and vegan contents", "Gluten free bottom bread"]);
+
+let infoBurgers = [burger1, burger2, burger3];
 
 export default {
   name: 'HomeView',
@@ -234,6 +235,11 @@ export default {
       top: 0;
       padding: 10px;
       border: 2px solid rgb(50, 50, 50);
+      display: inline-block;
+  }
+
+  .burgerpic {
+    width: 200px; height: 250px;
   }
 
   #header {
