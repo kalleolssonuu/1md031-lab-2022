@@ -41,10 +41,6 @@ body {
     padding: 5%;
 }
 
-#contactpayment {
-    /* padding: 5%; */
-}
-
 button {
     margin: 20px 0px 20px;
 }
@@ -64,8 +60,4 @@ h1, h2 {
 
 button:hover {
     background-color: cornflowerblue;
- }
-
- footer {
-    padding: 5px;
  }

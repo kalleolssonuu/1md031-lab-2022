@@ -1,6 +1,6 @@
 <template>
     <div>
-      {{ burger.name }} {{ burger.kCal }}
+      {{ burger.name }}, {{ burger.kCal }} kCal {{ burger.lactose }} {{ burger.gluten }}
       <button v-on:click="selectThisBurger">Select</button>
     </div>
   </template>
