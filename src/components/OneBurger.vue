@@ -1,35 +1,35 @@
 <template>
+<div>
 
+    <div class="burgers" v-for="(burger, index) in burgers" v-bind:key="index">
+      <h1> {{ burger.name }}
+        <span v-for="(allergen, index) in burger.allergens" v-bind:key="index"> 
+          <span v-if="allergen == 'lactose' || allergen == 'gluten'"> 
+            - contains <p class="allergen"> {{ allergen }} </p>
+          </span>
+        </span>
+      </h1>
 
-    <div class="burgers" v-for="burger in burgers" v-bind:key="burger.name">
-      <h1> {{ burger.name }} </h1>
-      <img class="burgerpic" src=burger.URL>
-      <ul v-for="ingredient in burger.ingredients">
-        <li v-if="ingredient == (lactose || gluten)"> {{ ingredient }} </li>
+      <img class="burgerpic" v-bind:src="burger.imgSrc">
+      <ul v-for="ingredient in burger.ingredients" v-bind:key="ingredient">
+        <li> {{ ingredient }} </li>
       </ul> 
     </div>
-
-    <div class="burgers" style="display: inline-block">
-        <h1> {{ burger.name }} </h1>
-        <img src=burger.URL alt="span" style="width: 200px; height: 250px;" title="Dystopia">
-        <ul>
-            <li>Top bread (<span class="allergen">gluten</span>)</li>
-            <li>Bottom bread (<span class="allergen">gluten</span>)</li>
-        </ul>
-    </div>
-
-
+<!-- 
     <div>
       {{ burger.name }}, {{ burger.kCal }} kCal {{ burger.lactose }} {{ burger.gluten }}
       <button v-on:click="selectThisBurger">Select</button>
-    </div>
+    </div> -->
+
+</div>
+
   </template>
   
   <script>
   export default {
     name: 'OneBurger',
     props: {
-      burger: Object
+      burgers: Object
     },
     methods: {
       selectThisBurger: function () {

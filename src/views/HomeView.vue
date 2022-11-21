@@ -101,8 +101,8 @@
 
     <div>
       {{ namn }} <br>
-      Current delivery time is: {{ deliveryTime }}
-      {{ selectedBurger }}
+      Current delivery time is: {{ deliveryTime }} <br>
+      Order: {{ selectedBurger }}
       <Burger v-for="burger in burgers"
               v-bind:burger="burger" 
               v-bind:timeStamp="Date.now().toString()"
@@ -110,14 +110,10 @@
               v-bind:key="burger.name"/> <!-- burger (till vänster) skickar lokal variabel till Oneburger 
                                               $-tecken representerar alltid den informationen som kommer TILL meddelandet  
                                               bURGER ÄR En KOMPOnEnT!! dvs som ett block likt en div  --> 
-                                              
-      <li v-for="burger in burgers" v-bind:key="burger.name">
-      {{ burger.name }} 
-      <span v-if="burger.kCal > 400">
-        BIG MEAL
-      </span>
-      </li>
     </div>
+
+    test
+
     <button v-on:click="checkDeliveryTime">Check Delivery Time</button>
 
     <div>
@@ -141,7 +137,7 @@ const socket = io();
 
 const MenuItem = function(nm, pic, cals, allrgns, ingrdnts) {
   this.name = nm;
-  this.URL = pic;
+  this.imgSrc = pic;
   this.kCal = cals;
   this.allergens = allrgns;
   this.ingredients = ingrdnts;
