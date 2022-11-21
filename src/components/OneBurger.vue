@@ -1,4 +1,14 @@
 <template>
+
+
+    <div class="burgers" v-for="burger in burgers" v-bind:key="burger.name">
+      <h1> {{ burger.name }} </h1>
+      <img class="burgerpic" src=burger.URL>
+      <ul v-for="ingredient in burger.ingredients">
+        <li v-if="ingredient == (lactose || gluten)"> {{ ingredient }} </li>
+      </ul> 
+    </div>
+
     <div class="burgers" style="display: inline-block">
         <h1> {{ burger.name }} </h1>
         <img src=burger.URL alt="span" style="width: 200px; height: 250px;" title="Dystopia">
