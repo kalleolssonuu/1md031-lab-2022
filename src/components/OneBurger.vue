@@ -1,17 +1,26 @@
 <template>
     <div class="burger" v-bind:key="burger">
-      <h1> {{ burger.name }}
-        <span v-for="(allergen, index) in burger.allergens" v-bind:key="index"> 
-          <span v-if="allergen == 'lactose' || allergen == 'gluten'"> 
-            - contains <p class="allergen"> {{ allergen }} </p>
-          </span>
-        </span>
-      </h1>
+      <h1> {{ burger.name }} </h1>
 
       <img class="burgerpic" v-bind:src="burger.imgSrc">
       <ul v-for="ingredient in burger.ingredients" v-bind:key="ingredient">
-        <li> {{ ingredient }} </li>
-      </ul> 
+          <li> {{ ingredient }} </li>
+      </ul>  
+
+      <ul style="list-style-type: square;">
+        <span v-for="allergen in burger.allergens" v-bind:key="allergen">
+          <span v-if="allergen == 'lactose' || allergen == 'gluten'">
+            <li id="allergenInfo"> <span> <p class="bold"> contains {{ allergen }} </p> </span>  </li>
+          </span>
+        </span>
+      </ul>
+      <div>
+        <p>Pris: {{ burger.price }} kr </p>
+        Amount: <button v-on:click=decreaseAmount type="button"> - </button>
+                <button v-on:click=increaseAmount type="button"> + </button> <br>
+        Added: {{ amountOrdered }}
+      </div>
+
     </div>
 <!-- 
     <div>
@@ -24,6 +33,11 @@
   
   <script>
   export default {
+    data: function() {
+      return {
+        amountOrdered: 0
+      }
+    },  
     name: 'OneBurger',
     props: {
       burger: Object
@@ -31,6 +45,18 @@
     methods: {
       selectThisBurger: function () {
         this.$emit("selected", this.burger)
+      },
+      increaseAmount: function () {
+        this.amountOrdered += 1;
+        this.$emit('orderedBurger', {name: this.burger.name, amount: this.amountOrdered
+        })
+      }, 
+      decreaseAmount: function () {
+        if (this.amountOrdered > 0) {
+          this.amountOrdered -= 1;
+        }
+        this.$emit('orderedBurger', {name: this.burger.name, amount: this.amountOrdered
+        })
       }
     }
   }

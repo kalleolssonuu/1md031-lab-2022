@@ -1,0 +1,30 @@
+[
+    {
+    "name": "Dystopia Burger",
+    "imgSrc":"https://st.depositphotos.com/1000504/3999/i/950/depositphotos_39996387-stock-photo-burger-bread.jpg",
+    "kCal": 50,
+    "allergens": ["gluten"],
+    "ingredients": ["Top bread", "Bottom bread"],
+    "price": 300
+    }, 
+
+    {
+    "name": "Levitating Burger",
+    "imgSrc": "https://live.staticflickr.com/7855/33697157168_fb75848bd5_b.jpg",
+    "kCal": "1000",
+    "allergens": ["lactose", "gluten"],
+    "ingredients": ["Lettuce", "Red Onion", "Tomato", "Cheese", "Ketchup", "Future Sauce", "Beef", "Bottom bread"],
+    "price": 250
+    },
+
+    {
+    "name": "Everyone-can-eat Burger",
+    "imgSrc": "https://glutenfreeindian.com/wp-content/uploads/2019/04/PUL_5600.jpg",
+    "kCal": "401",
+    "allergens": [""],
+    "ingredients": ["Gluten free top bread", "Non-allergenic and vegan contents", "Gluten free bottom bread"],
+    "price": 250
+    }
+
+
+]
