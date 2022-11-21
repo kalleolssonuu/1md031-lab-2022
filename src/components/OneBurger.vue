@@ -1,7 +1,5 @@
 <template>
-<div>
-
-    <div class="burgers" v-for="(burger, index) in burgers" v-bind:key="index">
+    <div class="burger" v-bind:key="burger">
       <h1> {{ burger.name }}
         <span v-for="(allergen, index) in burger.allergens" v-bind:key="index"> 
           <span v-if="allergen == 'lactose' || allergen == 'gluten'"> 
@@ -21,15 +19,14 @@
       <button v-on:click="selectThisBurger">Select</button>
     </div> -->
 
-</div>
 
-  </template>
+</template>
   
   <script>
   export default {
     name: 'OneBurger',
     props: {
-      burgers: Object
+      burger: Object
     },
     methods: {
       selectThisBurger: function () {

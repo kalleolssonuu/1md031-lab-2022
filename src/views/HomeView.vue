@@ -8,42 +8,20 @@
   <nav><h1 style="text-align: center;">Menu Items</h1> </nav>
 
   <main>
-    <section id="burgers">
-      <div class="burgers">
-        <h1>Dystopia Burger</h1>
-        <img src="https://st.depositphotos.com/1000504/3999/i/950/depositphotos_39996387-stock-photo-burger-bread.jpg" alt="span" style="width: 200px; height: 250px;" title="Dystopia">
-        <ul>
-            <li>Top bread (<span class="allergen">gluten</span>)</li>
-            <li>Bottom bread (<span class="allergen">gluten</span>)</li>
-        </ul>
+    <div class="wrapper">
+      <div>
+        {{ namn }} <br>
+        Current delivery time is: {{ deliveryTime }} <br>
+        Order: {{ selectedBurger }}
+        <Burger v-for="burger in burgers" 
+                v-bind:burger="burger" 
+                v-bind:timeStamp="Date.now().toString()"
+                v-on:selected="setSelectedBurger($event)"
+                v-bind:key="burger.name"/> <!-- burger (till vänster) skickar lokal variabel till Oneburger 
+                                                $-tecken representerar alltid den informationen som kommer TILL meddelandet  
+                                                bURGER ÄR En KOMPOnEnT!! dvs som ett block likt en div  --> 
       </div>
-
-      <div class="burgers">
-        <h1>Levitating Burger</h1>
-        <img src="https://live.staticflickr.com/7855/33697157168_fb75848bd5_b.jpg" alt="span" style="width: 200px; height: 250px;" title="Floating">
-        <ul>
-            <li>Top bread (<span class="allergen">gluten</span>)</li>
-            <li>Lettuce</li>
-            <li>Red Onion</li>
-            <li>Tomato</li>
-            <li>Cheese (<span class="allergen">lactose</span>)</li>
-            <li>Ketchup</li>
-            <li>Future Sauce</li>
-            <li>Beef</li>
-            <li>Bottom bread (<span class="allergen">gluten</span>)</li>
-        </ul>
-      </div>
-
-      <div class="burgers">
-        <h1>Everyone-can-eat Burger</h1>
-        <img src="https://glutenfreeindian.com/wp-content/uploads/2019/04/PUL_5600.jpg" alt="span" style="width: 200px; height: 250px;" title="Everyone-can-eat">
-        <ul>
-          <li>Gluten free top bread</li>
-          <li>Non-allergenic and vegan contents</li>
-          <li>Gluten free bottom bread</li>
-        </ul>
-      </div>
-    </section>
+    </div>
 
     <section class="userinfo" id="contactpayment">
       <form>
@@ -99,18 +77,7 @@
   </main>
 
 
-    <div>
-      {{ namn }} <br>
-      Current delivery time is: {{ deliveryTime }} <br>
-      Order: {{ selectedBurger }}
-      <Burger v-for="burger in burgers"
-              v-bind:burger="burger" 
-              v-bind:timeStamp="Date.now().toString()"
-              v-on:selected="setSelectedBurger($event)"
-              v-bind:key="burger.name"/> <!-- burger (till vänster) skickar lokal variabel till Oneburger 
-                                              $-tecken representerar alltid den informationen som kommer TILL meddelandet  
-                                              bURGER ÄR En KOMPOnEnT!! dvs som ett block likt en div  --> 
-    </div>
+
 
     test
 
@@ -225,14 +192,14 @@ export default {
       justify-content: first baseline;
   }
 
-  .burgers {
+/*   .burgers {
       height: relative;
       width: 270px;
       top: 0;
       padding: 10px;
       border: 2px solid rgb(50, 50, 50);
       display: inline-block;
-  }
+  } */
 
   .burgerpic {
     width: 200px; height: 250px;
@@ -246,13 +213,13 @@ export default {
       position: absolute; padding: 5%; margin-top: -64%; margin-left: 28%;
   }
 
-  #burgers {
+  .wrapper {
       background-color: black;
       color: white;
       left: 5%;
       size: relative;
-      display: flex;
-      justify-content: first baseline;
+      display: grid;
+      grid-template-columns: 33% 33% 33%;
   }
 
   .userinfo {
