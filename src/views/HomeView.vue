@@ -152,7 +152,7 @@ export default {
                  );
     },
     orderPressed: function () {
-      let order = {name: this.nm, email: this.email, payment: this.payment, gender: this.gender, amountOrdered: this. orderedBurgers};
+      let order = {name: this.nm, email: this.email, payment: this.payment, gender: this.gender, amountOrdered: this.orderedBurgers};
       console.log(order);
       socket.emit("addOrder", { orderId: this.getOrderNumber(),
                                 name: order.name,
@@ -176,7 +176,7 @@ export default {
       this.location.y = event.offsetY - 10;
     },
     addToOrder: function (event) {
-      this.orderedBurgers[event.name] = event.amount;
+      this.orderedBurgers[event.name] = event.amount; // event.name = nyckel, amount = värde
     },
     printOrder: function () {
       console.log(this.fullname, this.email, this.payment, this.gender);
@@ -196,38 +196,20 @@ export default {
 
 <style>
 
-#map {
-    position: relative;
-    background-repeat: no-repeat;
-    width: 1920px;
-    height: 1080px;
-    background: url("../../public/img/polacks.jpg");
-    cursor: pointer;
-  }
-
-#mapwrap {
-  width: 86vw;
-  height: 60vh;
-  margin: 2%;
-  overflow: scroll;
-}
-
-  /* #map:hover {
-    background-color: pink;
-  } */
-
-/*   body {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 14pt;
-    background-color: red;
-  } */
-
   .allburgers {
       left: 5%;
       size: relative;
       background-color: aliceblue;
       display: flex;
       justify-content: first baseline;
+  }
+
+  #allergenInfo {
+    color: red;
+  }
+
+  .bold {
+      font-weight: bold;
   }
 
   .burger {
@@ -242,8 +224,45 @@ export default {
     width: 200px; height: 250px;
   }
 
+  button {
+      margin: 20px 0px 20px;
+  }
+
+  button:hover {
+      background-color: cornflowerblue;
+  }
+
+  h1, h2 {
+      position: relative;
+
+  }
+
   #header {
       margin: 5px 0px 10px; overflow: hidden;
+  }
+
+  #map {
+      position: relative;
+      background-repeat: no-repeat;
+      width: 1920px;
+      height: 1080px;
+      background: url("../../public/img/polacks.jpg");
+      cursor: pointer;
+    }
+
+  #mapwrap {
+    width: 86vw;
+    height: 60vh;
+    margin: 2%;
+    overflow: scroll;
+  }
+
+  p {
+      font-size: large;
+  }
+
+  .userinfo {
+      padding: 5%;
   }
 
   #welcome {
@@ -259,35 +278,5 @@ export default {
       grid-template-columns: 33% 33% 33%;
 
       /* grid-auto-columns: auto; */
-  }
-
-
-  #allergenInfo {
-    color: red;
-  }
-
-  .userinfo {
-      padding: 5%;
-  }
-
-  button {
-      margin: 20px 0px 20px;
-  }
-
-  p {
-      font-size: large;
-  }
-
-  h1, h2 {
-      position: relative;
-
-  }
-
-  .bold {
-      font-weight: bold;
-  }
-
-  button:hover {
-      background-color: cornflowerblue;
   }
 </style>
