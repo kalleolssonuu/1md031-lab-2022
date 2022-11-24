@@ -1,14 +1,14 @@
 <template>
-    <div class="burger" v-bind:key="burger">
+    <div class="burger" v-bind:key="burger.time">
       <h1> {{ burger.name }} </h1>
 
       <img class="burgerpic" v-bind:src="burger.imgSrc">
-      <ul v-for="ingredient in burger.ingredients" v-bind:key="ingredient">
+      <ul v-for="(ingredient, key) in burger.ingredients" v-bind:key="key">
           <li> {{ ingredient }} </li>
       </ul>  
 
       <ul style="list-style-type: square;">
-        <span v-for="allergen in burger.allergens" v-bind:key="allergen">
+        <span v-for="(allergen, key) in burger.allergens" v-bind:key="key">
           <span v-if="allergen == 'lactose' || allergen == 'gluten'">
             <li id="allergenInfo"> <span> <p class="bold"> contains {{ allergen }} </p> </span>  </li>
           </span>
@@ -20,14 +20,7 @@
                 <button v-on:click=increaseAmount type="button"> + </button> <br>
         Added: {{ amountOrdered }}
       </div>
-
     </div>
-<!-- 
-    <div>
-      {{ burger.name }}, {{ burger.kCal }} kCal {{ burger.lactose }} {{ burger.gluten }}
-      <button v-on:click="selectThisBurger">Select</button>
-    </div> -->
-
 
 </template>
   
@@ -43,9 +36,6 @@
       burger: Object
     },
     methods: {
-      selectThisBurger: function () {
-        this.$emit("selected", this.burger)
-      },
       increaseAmount: function () {
         this.amountOrdered += 1;
         this.$emit('orderedBurger', {name: this.burger.name, amount: this.amountOrdered

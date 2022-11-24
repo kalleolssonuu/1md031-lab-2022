@@ -12,23 +12,23 @@
       <div class="wrapper">                     <!-- burger (till vänster) skickar lokal variabel till Oneburger 
                                                 $-tecken representerar alltid den informationen som kommer TILL meddelandet  
                                                 bURGER ÄR En KOMPOnEnT!! dvs som ett block likt en div  --> 
-        <Burger v-for="burger in burgers" 
+        <Burger v-for="(burger, key) in burgers" :key='key' 
                 v-bind:burger="burger" 
-                v-bind:key="burger.name" 
-                v-on:orderedBurger = "addtoOrder($event)"/>
+                v-bind:key="key" 
+                v-on:orderedBurger = "addToOrder($event)"/>
       </div>
     </div>
 
     <section class="userinfo" id="contactpayment">
       <form>
         <p>
-          <label for="fullname"> Full name </label><br>
-          <input type="text" id="firstname" v-model="fullname" required="required" placeholder="First- and Last name">
+          <label> Full name </label><br>
+          <input type="text" v-model="name" required="required" placeholder="First- and Last name">
         </p>
 
         <p>
-          <label for="lastname" type="text"> E-mail </label><br>
-          <input type="text" id="email" v-model="email" placeholder="E-mail address">
+          <label> E-mail </label><br>
+          <input type="text" v-model="email" placeholder="E-mail address">
         </p>
 
 <!--         <p>
@@ -57,19 +57,19 @@
     <section class="userinfo" id="gender">
       <p>
         <label> Gender </label><br>
-        <input type="radio" id="male" v-model="gender" required="required" placeholder="gender">
-        <label for="gender"> Male </label><br>
-        <input type="radio" id="female" v-model="gender" required="required" placeholder="gender">
-        {{ gender }}
-        <label for="gender"> Female </label><br>
-        <input type="radio" id="other" v-model="gender" required="required" placeholder="gender">
-        <label for="gender"> Do not wish to provide </label><br>
+        <input type="radio" id="male" v-model="gender" value="Male" required="required" placeholder="gender">
+        <label for="male"> Male </label><br>
+        <input type="radio" id="female" v-model="gender" value="Female" required="required" placeholder="gender">
+        <label for="female"> Female </label><br>
+        <input type="radio" id="other" v-model="gender" value="Other" required="required" placeholder="gender">
+        <label for="other"> Do not wish to provide </label><br>
       </p>
-
+      
       <div id="mapwrap"> 
         Pick a delivery point: 
-        <div id="map" v-on:click="setLocation">
-          <div v-bind:style="{left: location.x + 'px', top: location.y +'px'}" v-bind:key="'dots'">
+        <div id="map" v-on:click="setLocation($event)">
+          <div v-bind:style="{left: location.x + 'px', top: location.y +'px', position:'relative'}" v-bind:key="'dots'">
+          T
           </div>
         </div>
       </div>
@@ -78,10 +78,6 @@
           Send Info
       </button>
     </section>
-
-  
-
-    <button v-on:click="checkDeliveryTime">Check Delivery Time</button>
 
     <footer style="right: 0px; position: absolute; padding: 5px;">
         FutureBurgers, Inc.
@@ -111,98 +107,86 @@ export default {
   components: {
     Burger
   },
-  data: function () {
+  data: function() {
     return {
       deliveryTime: 0,
       selectedBurger: [],
-      namn: "hejhej", // DESSA HÄnVISAS TILL VIA "this."
-      colorList: [ {label: 'Red', color: '#FF0000'}, 
-                  {label: 'Green', color: '#00FF00'}],
       burgers: menu,
       orderedBurgers: {},
       location: {x: 0,
                  y: 0},
+      name: "",
+      email: "",
+      payment: "",
+      gender: "",
     }
   },
-  created: function () {
+  created: function() {
       socket.on('deliveryTimeIs', time =>
         this.deliveryTime = time.orders);
     },
 
   methods: {
-    setSelectedBurger: function (burgare) {
+    setSelectedBurger: function(burgare) {
       this.selectedBurger.push(burgare.name)
     },
-    getOrderNumber: function () {
+
+    getOrderNumber: function() {
       return Math.floor(Math.random()*100000);
     },
-    addOrder: function (event) {
+
+    addOrder: function(event) {
       console.log(event)
-      var offset = {x: event.currentTarget.getBoundingClientRect().left,
-                    y: event.currentTarget.getBoundingClientRect().top};
       socket.emit("addOrder", { orderId: this.getOrderNumber(),
                                 name: order.name,
                                 email: order.email,
                                 payment: order.payment,
                                 gender: order.gender,
-                                details: { x: event.offsetX - 10 - offset.x,
-                                           y: event.offsetY - 10 - offset.y },
+                                details: { x: event.offsetX - 10,
+                                           y: event.offsetY - 10},
                                 orderItems: order.amountOrdered
                               }
                  );
     },
-    orderPressed: function () {
-      let order = {name: this.nm, email: this.email, payment: this.payment, gender: this.gender, amountOrdered: this.orderedBurgers};
-      console.log(order);
-      socket.emit("addOrder", { orderId: this.getOrderNumber(),
-                                name: order.name,
-                                email: order.email,
-                                payment: order.payment,
-                                gender: order.gender,
-                                details: { x: event.offsetX - 10 - offset.x,
-                                           y: event.offsetY - 10 - offset.y },
-                                orderItems: order.amountOrdered
-                              })
-    },
 
+    orderPressed: function (event) {
+      let order = {name: this.name, email: this.email, payment: this.payment, gender: this.gender, amountOrdered: this.orderedBurgers};
+      console.log(order, {details: { x: this.location.x,
+                                     y: this.location.y}});
+      socket.emit("addOrder", {orderId: this.getOrderNumber(),
+          details: {
+          x: this.location.x,
+          y: this.location.y
+          },
+          orderItems: this.orderedBurgers,
+          customerInformation: [this.name, this.email, this.payment, this.gender]
+      });
+    },
 
     checkDeliveryTime: function() {
       socket.emit("deliveryTime");
     },
-    setLocation: function (event) {
-      var offset = {x: event.currentTarget.getBoundingClientRect().left,
-                    y: event.currentTarget.getBoundingClientRect().right};
-      this.location.x = event.offsetX - 10;
-      this.location.y = event.offsetY - 10;
+
+    setLocation: function(event) {
+      console.log(location.x, location.y)
+      this.location.x = event.offsetX;
+      this.location.y = event.offsetY;
     },
-    addToOrder: function (event) {
+
+    addToOrder: function(event) {
       this.orderedBurgers[event.name] = event.amount; // event.name = nyckel, amount = värde
     },
-    printOrder: function () {
-      console.log(this.fullname, this.email, this.payment, this.gender);
+
+    printOrder: function() {
+      console.log(this.name, this.email, this.payment, this.gender);
       console.log(this.orderedBurgers);
-      socket.emit("addOrder", {orderId: this.getOrderNumber(),
-            details: {
-              x: this.location.x,
-              y: this.location.y
-            },
-            orderItems: this.orderedBurgers,
-            customerInformation: [this.name, this.email, this.paymet, this.gender]
-      });
+    
     }
   } // socket.emit för att skicka. emit är etablerat språk för att skicka meddelanden. $-tecken för barn till förälder
 }
 </script>
 
 <style>
-
-  .allburgers {
-      left: 5%;
-      size: relative;
-      background-color: aliceblue;
-      display: flex;
-      justify-content: first baseline;
-  }
 
   #allergenInfo {
     color: red;
@@ -217,7 +201,6 @@ export default {
       width: 270px;
       top: 0;
       padding: 10px;
-      /* border: 2px solid rgb(50, 50, 50); */
   }
 
   .burgerpic {
@@ -245,7 +228,7 @@ export default {
       position: relative;
       background-repeat: no-repeat;
       width: 1920px;
-      height: 1080px;
+      height: 1078px;
       background: url("../../public/img/polacks.jpg");
       cursor: pointer;
     }

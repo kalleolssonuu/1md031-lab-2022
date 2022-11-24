@@ -3,9 +3,11 @@
     <div id="orderList">
       <div v-for="(order, key) in orders" v-bind:key="key">
         #{{ key }}: <div v-for="(item, index) in order.orderItems" :key="index" style="display: inline-block; margin-left: 5px;">
-            {{ index + ' ' + JSON.stringify(item) }} <br>
-          <dd> {{ order.customerInformation }} </dd>
-          </div>
+        <br> {{ index + ' ' + JSON.stringify(item) +',' }} <br>
+      </div>
+          <span v-for="(item, index) in order.customerInformation" :key="index"> 
+            <br> {{ item }}
+          </span>
       </div>
       <button v-on:click="clearQueue">Clear Queue</button>
     </div>
@@ -32,7 +34,6 @@
     created: function () {
       socket.on('currentQueue', data =>
         this.orders = data.orders);
-        console.log('blabla' + this.orders)
     },
     methods: {
       clearQueue: function () {
