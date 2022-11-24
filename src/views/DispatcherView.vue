@@ -1,22 +1,21 @@
 <template>
-    <div id="orders">
-      <div id="orderList">
-        <div v-for="(order, key) in orders" v-bind:key="key">
-          <p> #{{ key }}:</p>
-            <div v-for="(item, index) in order.orderItems" :key="index">
-            {{ index + ' ' + JSON.stringify(item) }}
-            </div>
-          
-        </div>
-        <button v-on:click="clearQueue">Clear Queue</button>
-      </div>
-      <div id="dots" v-bind:style="{ background: 'url(' + require('../../public/img/polacks.jpg')+ ')' }">
-          <div v-for="(order, key) in orders" v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}" v-bind:key="'dots' + key">
-            {{ key }}
+  <div id="orders">
+    <div id="orderList">
+      <div v-for="(order, key) in orders" v-bind:key="key">
+        #{{ key }}: <div v-for="(item, index) in order.orderItems" :key="index" style="display: inline-block; margin-left: 5px;">
+            {{ index + ' ' + JSON.stringify(item) }} <br>
+          <dd> {{ order.customerInformation }} </dd>
           </div>
       </div>
+      <button v-on:click="clearQueue">Clear Queue</button>
     </div>
-  </template>
+    <div id="dots" v-bind:style="{ background: 'url(' + require('../../public/img/polacks.jpg')+ ')' }">
+      <div v-for="(order, key) in orders" v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}" v-bind:key="'dots' + key">
+        {{ key }}
+      </div>
+    </div>
+  </div>
+</template>
 
 
   <script>
@@ -33,6 +32,7 @@
     created: function () {
       socket.on('currentQueue', data =>
         this.orders = data.orders);
+        console.log('blabla' + this.orders)
     },
     methods: {
       clearQueue: function () {
